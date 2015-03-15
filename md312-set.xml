@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <PropertyList include="md312-jsbsim-cnf.xml"> -->
+<PropertyList include="md312-yasim-cnf.xml">
+
+  <sim>
+    <description>Dassault MD 312 Flamant</description>
+    <author>BARANGER Emmanuel</author>
+  </sim>
+
+</PropertyList>
+

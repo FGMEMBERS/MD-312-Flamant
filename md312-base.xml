@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim include="Nasal/views.xml">
+ 
+    <author>BARANGER Emmanuel (3D)</author>
+    <aircraft-version>0.1</aircraft-version>
+    <status>Alpha</status>
+   
+    <fuel-fraction>0.8</fuel-fraction>
+  
+    <startup>
+      <splash-texture>Aircraft/MD-312-Flamant/md312-splash.png</splash-texture>
+    </startup>
+
+    <model>
+      <path>Aircraft/MD-312-Flamant/Models/md312.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+    </model>
+
+    <sound>
+      <path>Aircraft/MD-312-Flamant/Sounds/md312-sound.xml</path>
+    </sound>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic> 
+        <int type="int">0</int>  <!-- 0 immat -->
+        <int type="int">0</int>  <!-- 1 immat -->
+        <int type="int">0</int>  <!-- 2 immat -->
+        <int type="int">0</int>  <!-- 3 immat -->
+        <int type="int">0</int>  <!-- 4 immat -->
+        <int type="int">0</int>  <!-- 5 immat -->
+        <int type="bool">0</int> <!-- 6 smoke -->
+        <int type="int">0</int>  <!-- 7 color -->
+        <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
+        <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
+      </generic>
+    </multiplay>
+
+    <flaps>
+      <setting>0.00</setting>
+      <setting>0.25</setting>
+      <setting>0.50</setting>
+      <setting>0.75</setting>
+      <setting>1.00</setting>
+    </flaps>
+
+    <help>
+      <title>B 25 Mitchell</title>
+      <key>
+        <name>d</name>
+        <desc>Open/Close door</desc>
+      </key>
+    </help>
+
+    <menubar include="Dialogs/md312-menu.xml"/>
+
+  </sim>
+
+  <controls>
+    <engines>
+      <engine n="0">
+        <magnetos>0</magnetos>
+      </engine>
+      <engine n="1">
+        <magnetos>0</magnetos>
+      </engine>
+    </engines>
+  </controls>
+
+  <engines>
+    <engine n="0">
+      <engine-num type="int">0</engine-num>
+      <rpm>500</rpm>
+      <running>false</running>
+    </engine>
+    <engine n="1">
+      <engine-num type="int">1</engine-num>
+      <rpm>500</rpm>
+      <running>false</running>
+    </engine>
+  </engines>
+
+  <input>
+    <keyboard include="Nasal/md312-keyboard.xml"/>
+  </input>
+ 
+  <nasal>
+    <md312>
+      <file>Aircraft/MD-312-Flamant/Nasal/doors.nas</file>
+      <file>Aircraft/MD-312-Flamant/Nasal/liveries.nas</file>
+      <file>Aircraft/MD-312-Flamant/Nasal/light.nas</file>
+    </md312>
+  </nasal>
+
+</PropertyList>
+
