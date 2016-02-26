@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- =======================================================>> 
+<<
+<<                  Breguet 761 Sahara - DME
+<<
+<<               Didier Bourguet (didier1963)
+<<                  didier1963@laposte.net
+<<
+<<                    Team M88 - Nov 2014
+<<
+<<=========================================================-->
+<PropertyList>
+  
+  <path>dme.ac</path>
+  
+  <animation>
+    <object-name>DME</object-name>
+    <object-name>DMEbckgnd</object-name>
+    <object-name>DME-FDhorizontalBarre</object-name>
+    <object-name>DME-FDverticalBarre</object-name>
+    <object-name>DMEadjust</object-name>
+    <object-name>DMEdeviation</object-name>
+    <object-name>DMEdigit1</object-name>
+    <object-name>DMEdigit10</object-name>
+    <object-name>DMEdigit100</object-name>
+    <object-name>DMEflagOffleft</object-name>
+    <object-name>DMEflagOffup</object-name>
+    <object-name>DMEmarkerlight</object-name>
+    
+    <!-- Transparent Objects -->
+    <object-name>DMEglass</object-name>
+  </animation>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Br-761/Models/Effects/Glass/glass</inherits-from>
+    <object-name>DMEglass</object-name>
+  </effect>
+  
+  <!-- Istr. Light effect -->
+  <animation>
+    <type>material</type>
+    <object-name>DMEbckgnd</object-name>
+    <object-name>DME-FDhorizontalBarre</object-name>
+    <object-name>DME-FDverticalBarre</object-name>
+    <object-name>DMEadjust</object-name>
+    <object-name>DMEdeviation</object-name>
+    <object-name>DMEdigit1</object-name>
+    <object-name>DMEdigit10</object-name>
+    <object-name>DMEdigit100</object-name>
+    <object-name>DMEflagOffleft</object-name>
+    <object-name>DMEflagOffup</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+  
+  <!-- Deflection Needle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>DMEdeviation</object-name>
+    <property>/instrumentation/nav[0]/gs-needle-deflection-norm</property>
+    <factor> 0.36b </factor>
+    <center>
+      <x> -0.00098 </x>
+      <y>  0.00000 </y>
+      <z> -0.00629 </z>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <!--
+  <animation>
+    <type>material</type>
+    <object-name>DMElight</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   1.0 </red>
+      <green> 0.5 </green>
+      <blue>  0.5 </blue>
+    </emission>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>DME-FDhorizontalBarre</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.36 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>DME-FDverticalBarre</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.036 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>DMEadjust</object-name>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <factor> 1 </factor>
+    <interpolation>
+      <entry><ind> 27.50 </ind><dep>   0.00 </dep></entry>
+      <entry><ind> 28.00 </ind><dep>  48.60 </dep></entry>
+      <entry><ind> 28.50 </ind><dep>  98.86 </dep></entry>
+      <entry><ind> 29.00 </ind><dep> 150.00 </dep></entry>
+      <entry><ind> 29.50 </ind><dep> 201.20 </dep></entry>
+      <entry><ind> 30.00 </ind><dep> 251.34 </dep></entry>
+      <entry><ind> 30.50 </ind><dep> 301.25 </dep></entry>
+      <entry><ind> 31.00 </ind><dep> 349.61 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>DMErose</object-name>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <factor> 1 </factor>
+    <interpolation>
+      <entry><ind> 27.50 </ind><dep>   0.00 </dep></entry>
+      <entry><ind> 28.00 </ind><dep>  48.60 </dep></entry>
+      <entry><ind> 28.50 </ind><dep>  98.86 </dep></entry>
+      <entry><ind> 29.00 </ind><dep> 150.00 </dep></entry>
+      <entry><ind> 29.50 </ind><dep> 201.20 </dep></entry>
+      <entry><ind> 30.00 </ind><dep> 251.34 </dep></entry>
+      <entry><ind> 30.50 </ind><dep> 301.25 </dep></entry>
+      <entry><ind> 31.00 </ind><dep> 349.61 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>DMEdigit1</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.036 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>DMEdigit10</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.036 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>translate</type>
+    <object-name>DMEdigit100</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor>0.036</factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>DMEflagOffleft</object-name>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <factor>1</factor>
+    <interpolation>
+      <entry><ind> 27.50 </ind><dep>   0.00 </dep></entry>
+      <entry><ind> 31.00 </ind><dep> 349.61 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>DMEflagOffup</object-name>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <factor> 1 </factor>
+    <interpolation>
+      <entry><ind> 27.50 </ind><dep>   0.00 </dep></entry>
+      <entry><ind> 31.00 </ind><dep> 349.61 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>DMEadjust</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec> 0.1 </interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> 0.01 </step>
+        <min> 27.50 </min>
+        <max> 31.00 </max>
+        <wrap> 0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>DMEadjust</object-name>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec> 0.1 </interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> -0.01 </step>
+        <min>  27.50 </min>
+        <max>  31.00 </max>
+        <wrap>  0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>DMEadjust</object-name>
+    <action>
+      <button>3</button>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> 0.01 </step>
+        <min> 27.50 </min>
+        <max> 31.00 </max>
+        <wrap> 0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>DMEadjust</object-name>
+    <action>
+      <button>4</button>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> -0.01 </step>
+        <min>  27.50 </min>
+        <max>  31.00 </max>
+        <wrap>  0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>DMEadjust</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.36 </factor>
+    <center>
+      <x-m>  0.005551 </x-m>
+      <y-m> -0.024550 </y-m>
+      <z-m> -0.020900 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  -->
+    
+</PropertyList>
