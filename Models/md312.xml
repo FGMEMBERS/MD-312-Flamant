@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
 
   <path>md312.ac</path>
 
+  <!-- MP sound call -->
+  <sound>
+    <path>Aircraft/MD-312-Flamant/Sounds/mp-sound.xml</path>
+  </sound>
+  
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Aircraft/MD-312-Flamant/Models/Liveries", 10);
@@ -12,10 +17,10 @@
 
       var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
-      
-      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
-      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
-    
+
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
     </load>
@@ -56,7 +61,10 @@
     <object-name>porteGI</object-name>
     <object-name>porteDE</object-name>
     <object-name>porteDI</object-name>
+    <object-name>porte</object-name>
+    <object-name>antennes</object-name>
 
+    <object-name>cables</object-name>
     <object-name>axeAH</object-name>
     <object-name>axeAB</object-name>
     <object-name>roueA</object-name>
@@ -73,6 +81,8 @@
 
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
+    <object-name>vitreporte</object-name>
+    <object-name>beacon</object-name>
     <object-name>propblurG</object-name>
     <object-name>propdiscG</object-name>
     <object-name>propblurD</object-name>
@@ -108,7 +118,10 @@
     <object-name>porteGI</object-name>
     <object-name>porteDE</object-name>
     <object-name>porteDI</object-name>
+    <object-name>porte</object-name>
+    <object-name>antennes</object-name>
 
+    <object-name>cables</object-name>
     <object-name>axeAH</object-name>
     <object-name>axeAB</object-name>
     <object-name>roueA</object-name>
@@ -126,35 +139,11 @@
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-<!--
-    <diffuse>
-      <red-prop>diffuse/red</red-prop>
-      <green-prop>diffuse/green</green-prop>
-      <blue-prop>diffuse/blue</blue-prop>
-    </diffuse>
-
-    <ambient>
-      <red-prop>ambient/red</red-prop>
-      <green-prop>ambient/green</green-prop>
-      <blue-prop>ambient/blue</blue-prop>
-    </ambient>
--->
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
-    <emission>
-      <red-prop>emission/red</red-prop>
-      <green-prop>emission/green</green-prop>
-      <blue-prop>emission/blue</blue-prop>
-    </emission>
-<!--
-    <shininess>
-      <shininess-prop>shininess</shininess-prop>
-    </shininess>
--->
   </animation>
 
   <effect>
@@ -186,24 +175,29 @@
     <object-name>porteGI</object-name>
     <object-name>porteDE</object-name>
     <object-name>porteDI</object-name>
+    <object-name>porte</object-name>
+    <object-name>antennes</object-name>
   </effect>
 
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/MD-312-Flamant/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitres</object-name>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
+    <object-name>vitreporte</object-name>
+    <object-name>beacon</object-name>
+  </effect>
+  
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>vitres</object-name>
+    <object-name>vitreporte</object-name>
+    <object-name>beacon</object-name>
     <object-name>propblurG</object-name>
     <object-name>propdiscG</object-name>
     <object-name>propblurD</object-name>
     <object-name>propdiscD</object-name>
-  </animation>
-
+  </effect>
+  
   <animation>
     <type>select</type>
     <object-name>roueA</object-name>
@@ -240,65 +234,65 @@
   <!-- Une ombre pour OSG -->
   <model>
     <path>Aircraft/MD-312-Flamant/Models/shadow.xml</path>
+    <offsets>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m> -1.9 </z-m>
+    </offsets>
   </model>
 
   <!-- Intérieur -->
   <model>
+    <name>Interieur</name>
     <path>Aircraft/MD-312-Flamant/Models/Interior/interior.xml</path>
-    <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
-    </offsets>
   </model>
+  
+  <!-- For Rembrandt -->
+  <animation>
+    <type>noshadow</type>
+    <object-name>Interieur</object-name>
+  </animation>
+    
 
   <!-- Cranking effects -->
   <!-- Left exterior -->
   <model>
-    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/cranking.xml</path>
+    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/crankingL.xml</path>
     <offsets>
       <x-m> -3.978 </x-m>
       <y-m> -2.689 </y-m>
       <z-m> -0.854 </z-m>
-      <roll-deg>    0 </roll-deg>
-      <pitch-deg>  35 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
+      <pitch-deg> 35 </pitch-deg>
     </offsets>
   </model>
 
   <model>
-    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/cranking.xml</path>
+    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/crankingL.xml</path>
     <offsets>
       <x-m> -3.978 </x-m>
       <y-m> -2.155 </y-m>
       <z-m> -0.854 </z-m>
-      <roll-deg>    0 </roll-deg>
-      <pitch-deg>  35 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
+      <pitch-deg> 35 </pitch-deg>
     </offsets>
   </model>
 
   <model>
-    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/cranking.xml</path>
+    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/crankingR.xml</path>
     <offsets>
       <x-m> -3.978 </x-m>
       <y-m>  2.689 </y-m>
       <z-m> -0.854 </z-m>
-      <roll-deg>    0 </roll-deg>
-      <pitch-deg>  35 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
+      <pitch-deg> 35 </pitch-deg>
     </offsets>
   </model>
 
   <model>
-    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/cranking.xml</path>
+    <path>Aircraft/MD-312-Flamant/Models/Effects/cranking/crankingR.xml</path>
     <offsets>
       <x-m> -3.978 </x-m>
       <y-m>  2.155 </y-m>
       <z-m> -0.854 </z-m>
-      <roll-deg>    0 </roll-deg>
-      <pitch-deg>  35 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
+      <pitch-deg> 35 </pitch-deg>
     </offsets>
   </model>
 
@@ -385,6 +379,12 @@
   <animation>
     <type>spin</type>
     <object-name>HeliceCompleteG</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
     <property>engines/engine[0]/rpm</property>
     <factor> 1 </factor>
     <center>
@@ -450,6 +450,12 @@
   <animation>
     <type>spin</type>
     <object-name>HeliceCompleteD</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[1]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
     <property>engines/engine[1]/rpm</property>
     <factor> 1 </factor>
     <center>
@@ -469,11 +475,11 @@
     <type>rotate</type>
     <object-name>directionG</object-name>
     <property>surface-positions/rudder-pos-norm</property>
-    <factor> -25 </factor>
+    <factor> -15 </factor>
     <center>
-     <x-m>  5.095 </x-m>
-     <y-m> -2.960 </y-m>
-     <z-m>  1.073 </z-m>
+      <x-m>  5.095 </x-m>
+      <y-m> -2.960 </y-m>
+      <z-m>  1.073 </z-m>
     </center>
     <axis>
       <x> 0 </x>
@@ -486,11 +492,11 @@
     <type>rotate</type>
     <object-name>directionD</object-name>
     <property>surface-positions/rudder-pos-norm</property>
-    <factor> -25 </factor>
+    <factor> -15 </factor>
     <center>
-     <x-m> 5.095 </x-m>
-     <y-m> 2.960 </y-m>
-     <z-m> 1.073 </z-m>
+      <x-m> 5.095 </x-m>
+      <y-m> 2.960 </y-m>
+      <z-m> 1.073 </z-m>
     </center>
     <axis>
       <x> 0 </x>
@@ -504,7 +510,7 @@
     <type>rotate</type>
     <object-name>profondeurG</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 25 </factor>
+    <factor> 15 </factor>
     <axis>
       <x1-m>  5.065 </x1-m>
       <y1-m> -2.824 </y1-m>
@@ -519,7 +525,7 @@
     <type>rotate</type>
     <object-name>profondeurD</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 25 </factor>
+    <factor> 15 </factor>
     <axis>
       <x1-m> 5.125 </x1-m>
       <y1-m> 0.392 </y1-m>
@@ -918,7 +924,7 @@
     </axis>
   </animation>
  
-  <!-- Compression
+  <!-- Compression -->
   <animation>
     <name>RoueAvant</name>
     <object-name>roueA</object-name>
@@ -930,14 +936,13 @@
     <object-name>RoueAvant</object-name>
     <property>gear/gear[0]/compression-norm</property>
     <interpolation>
-      <entry><ind> 0.00 </ind><dep> -0.08 </dep></entry>
-      <entry><ind> 0.13 </ind><dep>  0.00 </dep></entry>
-      <entry><ind> 1.00 </ind><dep>  0.29 </dep></entry>
+      <entry><ind> 0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1 </ind><dep> 0.21 </dep></entry>
     </interpolation>
     <axis>
-      <x>  0.104965 </x>
-      <y> -0.000293 </y>
-      <z>  0.506661 </z>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
     </axis>
   </animation>
 
@@ -952,14 +957,13 @@
     <object-name>RoueGauche</object-name>
     <property>gear/gear[1]/compression-norm</property>
     <interpolation>
-      <entry><ind> 0.00 </ind><dep> -0.08 </dep></entry>
-      <entry><ind> 0.13 </ind><dep>  0.00 </dep></entry>
-      <entry><ind> 1.00 </ind><dep>  0.29 </dep></entry>
+      <entry><ind> 0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1 </ind><dep> 0.39 </dep></entry>
     </interpolation>
     <axis>
-      <x> 0.0 </x>
-      <y> 0.0 </y>
-      <z> 1.0 </z>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
     </axis>
   </animation>
 
@@ -974,20 +978,20 @@
     <object-name>RoueDroite</object-name>
     <property>gear/gear[2]/compression-norm</property>
     <interpolation>
-      <entry><ind> 0.00 </ind><dep> -0.08 </dep></entry>
-      <entry><ind> 0.13 </ind><dep>  0.00 </dep></entry>
-      <entry><ind> 1.00 </ind><dep>  0.29 </dep></entry>
+      <entry><ind> 0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1 </ind><dep> 0.39 </dep></entry>
     </interpolation>
     <axis>
-      <x> 0.0 </x>
-      <y> 0.0 </y>
-      <z> 1.0 </z>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
     </axis>
-  </animation> -->
+  </animation>
 
   <!-- Rotation de la roue avant en fonction de la gouverne de direction -->
   <animation>
     <name>TrainAvantComlplet</name>
+    <object-name>axeAB</object-name>
     <object-name>roueA</object-name>
   </animation>
 
@@ -1060,5 +1064,88 @@
     </axis>
   </animation>
 
-</PropertyList>
+  <!-- Porte droite -->
+  <animation>
+    <name>LaPorte</name>
+    <object-name>porte</object-name>
+    <object-name>vitreporte</object-name>
+  </animation>
 
+  <animation>
+    <type>pick</type>
+    <object-name>LaPorte</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>LaPorte</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <factor> 160 </factor>
+    <center>
+      <x-m>  1.07197 </x-m>
+      <y-m>  0.88084 </y-m>
+      <z-m> -0.04281 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- Ajout des effets lumineux -->
+  <model>
+    <path>Aircraft/MD-312-Flamant/Models/light/beacon.xml</path>
+    <offsets>
+      <x-m> -0.25664 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  1.01409 </z-m>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/MD-312-Flamant/Models/light/RedLight.xml</path>
+    <offsets>
+      <x-m>  -1.70903 </x-m>
+      <y-m> -10.32302 </y-m>
+      <z-m>   0.63810 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/MD-312-Flamant/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m>  -1.71903 </x-m>
+      <y-m> -10.32302 </y-m>
+      <z-m>   0.63810 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/MD-312-Flamant/Models/light/GreenLight.xml</path>
+    <offsets>
+      <x-m> -1.70903 </x-m>
+      <y-m> 10.32302 </y-m>
+      <z-m>  0.63810 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/MD-312-Flamant/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -1.71903 </x-m>
+      <y-m> 10.32302 </y-m>
+      <z-m>  0.63810 </z-m>
+    </offsets>
+  </model>
+  
+</PropertyList>

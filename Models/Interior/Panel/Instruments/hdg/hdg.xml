@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- =======================================================>> 
+<<
+<<                 Breguet 761 Sahara - HDG
+<<
+<<               Didier Bourguet (didier1963)
+<<                  didier1963@laposte.net
+<<
+<<                    Team M88 - April 2013
+<<
+<<=========================================================-->
+<PropertyList>
+  
+  <path>hdg.ac</path>
+  
+  <animation>
+    <object-name>HDG</object-name>
+    <object-name>HDGadjust</object-name>
+    <object-name>HDGbckgnd</object-name>
+    <object-name>HDGcm</object-name>
+    <object-name>HDGneedle</object-name>
+    <object-name>HDGneedle2</object-name>
+    <object-name>HDGrose</object-name>
+    
+    <object-name>HDGglass</object-name>
+  </animation>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Br-761/Models/Effects/Glass/glass</inherits-from>
+    <object-name>HDGglass</object-name>
+  </effect>
+  
+  <!-- Istr. Light effect -->
+  <animation>
+    <type>material</type>
+    <object-name>HDGadjust</object-name>
+    <object-name>HDGbckgnd</object-name>
+    <object-name>HDGcm</object-name>
+    <object-name>HDGneedle</object-name>
+    <object-name>HDGneedle2</object-name>
+    <object-name>HDGrose</object-name>    
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+  <!--
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>HDGneedle</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.36 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  -->
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>HDGrose</object-name>
+    <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+    <factor> 1 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>HDGcm</object-name>
+    <property>/instrumentation/altimeter/setting-inhg</property>
+    <factor> 1 </factor>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+  
+  <!--
+  <animation>
+    <type>pick</type>
+    <object-name>HDGadjust</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec> 0.1 </interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> 0.01 </step>
+        <min> 27.50 </min>
+        <max> 31.00 </max>
+        <wrap> 0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>HDGadjust</object-name>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec> 0.1 </interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> -0.01 </step>
+        <min>  27.50 </min>
+        <max>  31.00 </max>
+        <wrap>  0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>HDGadjust</object-name>
+    <action>
+      <button>3</button>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> 0.01 </step>
+        <min> 27.50 </min>
+        <max> 31.00 </max>
+        <wrap> 0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>HDGadjust</object-name>
+    <action>
+      <button>4</button>
+      <binding>
+        <command>property-adjust</command>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step> -0.01 </step>
+        <min>  27.50 </min>
+        <max>  31.00 </max>
+        <wrap>  0.00 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>HDGadjust</object-name>
+    <property>/instrumentation/altimeter/indicated-altitude-ft</property>
+    <factor> 0.36 </factor>
+    <center>
+      <x-m>  0.00356 </x-m>
+      <y-m>  0.03404 </y-m>
+      <z-m> -0.04826 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  -->
+  
+</PropertyList>
+  

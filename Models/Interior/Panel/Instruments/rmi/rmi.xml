@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- =======================================================>> 
+<<
+<<                Breguet 761 Sahara - RMI
+<<
+<<               Didier Bourguet (didier1963)
+<<                  didier1963@laposte.net
+<<
+<<                    Team M88 - Jan 2015
+<<
+<<=========================================================-->
+<PropertyList>
+  
+  <path>rmi.ac</path>
+  
+  <animation>
+    <object-name>RMI</object-name>
+    <object-name>RMIbckgnd</object-name>
+    <object-name>RMI1Needle</object-name>
+    <object-name>RMI2Needle</object-name>
+    <object-name>RMIadjust</object-name>
+    <object-name>RMIrose</object-name>
+    <object-name>ScrewPhilipsRound</object-name>
+    
+    <object-name>RMIglass</object-name>
+  </animation>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/MD-312-Flamant/Models/Effects/Glass/glass</inherits-from>
+    <object-name>RMIglass</object-name>
+  </effect>
+  
+  <!-- Istr. Light effect -->
+  <animation>
+    <type>material</type>
+    <object-name>RMIbckgnd</object-name>
+    <object-name>RMI1Needle</object-name>
+    <object-name>RMI2Needle</object-name>
+    <object-name>RMIrose</object-name>
+    <emission>
+      <factor-prop>/systems/electrical/outputs/instrument-lights</factor-prop>
+      <red>   1 </red>
+      <green> 1 </green>
+      <blue>  1 </blue>
+    </emission>
+  </animation>
+  
+  <!-- ADF Needle Rotation -->
+  <animation>
+    <type>rotate</type>
+    <object-name>RMI1Needle</object-name>
+    <property>/instrumentation/kr-87/outputs/needle-deg</property>
+    <factor> 1 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <!-- ADF Needle Rotation -->
+  <animation>
+    <type>rotate</type>
+    <object-name>RMI2Needle</object-name>
+    <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+    <factor> 1 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <!--RMI Dial Rotation -->
+  <animation>
+    <type>rotate</type>
+    <object-name>RMIrose</object-name>
+    <property>/instrumentation/kr-87/inputs/rotation-deg</property>
+    <factor> 1 </factor>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+  <!-- Adjust Knob Rotation -->
+  <animation>
+    <type>pick</type>
+    <object-name>RMIadjust</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec> 0.1 </interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/kr-87/inputs/rotation-deg</property>
+        <step>   1 </step>
+        <min> -360 </min>
+        <max>  360 </max>
+        <wrap>   0 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>RMIadjust</object-name>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec> 0.1 </interval-sec>
+      <binding>
+        <command>property-adjust</command>
+        <property>/instrumentation/kr-87/inputs/rotation-deg</property>
+        <step>   -1 </step>
+        <min>  -360 </min>
+        <max>     0 </max>
+        <wrap>    0 </wrap>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>RMIadjust</object-name>
+    <property>/instrumentation/kr-87/inputs/rotation-deg</property>
+    <factor> 1 </factor>
+    <center>
+      <x-m>  0.00186 </x-m>
+      <y-m>  0.02853 </y-m>
+      <z-m> -0.03072 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+  
+</PropertyList>
